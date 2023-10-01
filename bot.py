@@ -72,12 +72,10 @@ class ZipRarBot(pyrogram.Client):
 bot = ZipRarBot("5053402593:AAGDN6XuOz4qKWgPIatEGfkJqoporK94h78")
 
 # Replace the following values with your own API ID and API hash
-API_ID = 6534707
-API_HASH = "4bcc61d959a9f403b2f20149cbbe627a"
+api_id = 6534707
+api_hash = "4bcc61d959a9f403b2f20149cbbe627a"
 
-# Create a new Pyrogram client
-client = pyrogram.Client("bot", api_id=API_ID, api_hash=API_HASH)
-
+app = Client("my_account", api_id=api_id, api_hash=api_hash)
 # Add handlers for the /zip, /rar, /zip_with_password, and /rar_with_password commands.
 bot.add_handler(filters.command("zip") & filters.document, zip)
 bot.add_handler(filters.command("zip_with_password") & filters.document, zip_with_password)
