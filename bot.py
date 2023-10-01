@@ -1,7 +1,7 @@
 import pyrogram
 import zipfile
 import rarfile
-from pyrogram.types import User, Message, ...
+from pyrogram.types import User, Message
 class ZipRarBot(pyrogram.Client):
     async def zip(self, message: pyrogram.Message):
         """Zips the file sent by the user and sends it back to them."""
