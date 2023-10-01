@@ -6,9 +6,15 @@ from pyrogram import filters
 from pyrogram.filters import Message
 from pyrogram import Client
 # Replace the following values with your own API ID and API hash
-api_id = 6534707
-api_hash = "4bcc61d959a9f403b2f20149cbbe627a"
-app = Client("my_account", api_id=api_id, api_hash=api_hash)
+import pyrogram
+
+# Replace the following values with your own API ID and API hash
+API_ID = 6534707
+API_HASH = "4bcc61d959a9f403b2f20149cbbe627a"
+
+# Create a new Pyrogram client
+client = pyrogram.Client("my_bot", api_id=API_ID, api_hash=API_HASH)
+
 async def zip_with_password(self, message: pyrogram.types.Message):
     """Zips the file sent by the user and sends it back to them with a password."""
 
