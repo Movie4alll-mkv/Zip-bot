@@ -5,6 +5,10 @@ from pyrogram.types import User, Message
 from pyrogram import filters
 from pyrogram.filters import Message
 from pyrogram import Client
+# Replace the following values with your own API ID and API hash
+api_id = 6534707
+api_hash = "4bcc61d959a9f403b2f20149cbbe627a"
+app = Client("my_account", api_id=api_id, api_hash=api_hash)
 async def zip_with_password(self, message: pyrogram.types.Message):
     """Zips the file sent by the user and sends it back to them with a password."""
 
@@ -71,11 +75,6 @@ class ZipRarBot(pyrogram.Client):
 # Create a new bot.
 bot = ZipRarBot("5053402593:AAGDN6XuOz4qKWgPIatEGfkJqoporK94h78")
 
-# Replace the following values with your own API ID and API hash
-api_id = 6534707
-api_hash = "4bcc61d959a9f403b2f20149cbbe627a"
-
-app = Client("my_account", api_id=api_id, api_hash=api_hash)
 # Add handlers for the /zip, /rar, /zip_with_password, and /rar_with_password commands.
 bot.add_handler(filters.command("zip") & filters.document, zip)
 bot.add_handler(filters.command("zip_with_password") & filters.document, zip_with_password)
