@@ -32,7 +32,7 @@ class ZipRarBot(pyrogram.Client):
         # Send the rar file to the user.
         await self.send_document(message.chat.id, rar_file_path)
 
-    async def zip_with_password(self, message: pyrogram.Message):
+    async def zip_with_password(self, message: pyrogram.types.Message):
         """Zips the file sent by the user and sends it back to them with a password."""
 
         # Get the file path from the user.
