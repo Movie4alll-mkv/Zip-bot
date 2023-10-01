@@ -4,7 +4,7 @@ import rarfile
 from pyrogram.types import User, Message
 from pyrogram import filters
 from pyrogram.filters import Message
-
+from pyrogram import Client
 async def zip_with_password(self, message: pyrogram.types.Message):
     """Zips the file sent by the user and sends it back to them with a password."""
 
