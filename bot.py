@@ -45,7 +45,5 @@ bot = ZipRarBot("4bcc61d959a9f403b2f20149cbbe627a", "6534707", "5053402593:AAGDN
 
 # Add handlers for the /zip and /zip_with_password commands.
 bot.add_handler(filters.command("zip") & filters.document, zip)
-bot.add_handler(filters.command("zip_with_password") & filters.document, zip_with_password)
-
 # Start the bot.
 bot.run()
