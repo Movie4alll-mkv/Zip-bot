@@ -2,6 +2,7 @@ import pyrogram
 import zipfile
 import rarfile
 from pyrogram.types import User, Message
+from pyrogram import filters
 from pyrogram.filters import Message
 class ZipRarBot(pyrogram.Client):
     async def zip(self, message: pyrogram.types.Message):
