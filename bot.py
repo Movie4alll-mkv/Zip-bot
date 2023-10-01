@@ -1,38 +1,14 @@
 import pyrogram
 import zipfile
-import rarfile
 from pyrogram.types import User, Message
 from pyrogram import filters
 from pyrogram.filters import Message
-from pyrogram import Client
-# Replace the following values with your own API ID and API hash
-import pyrogram
-
-# Replace the following values with your own API ID and API hash
-API_ID = 6534707
-API_HASH = "4bcc61d959a9f403b2f20149cbbe627a"
-
-# Create a new Pyrogram client
-client = pyrogram.Client("my_bot", api_id=API_ID, api_hash=API_HASH)
-
-async def zip_with_password(self, message: pyrogram.types.Message):
-    """Zips the file sent by the user and sends it back to them with a password."""
-
-    # Get the file path from the user.
-    file_path = message.document.file_path
-
-    # Get the password from the user.
-    password = message.text.split()[1]
-
-    # Create a zip file of the file with a password.
-    zip_file_path = file_path + ".zip"
-    with zipfile.ZipFile(zip_file_path, "w", zipfile.ZIP_DEFLATED) as zip_file:
-        zip_file.write(file_path, password)
-
-    # Send the zip file to the user.
-    await self.send_document(message.chat.id, zip_file_path)
 
 class ZipRarBot(pyrogram.Client):
+    def __init__(self, api_id, api_hash, bot_token, owner_id):
+        super().__init__(api_id, api_hash, bot_token)
+        self.owner_id = owner_id
+
     async def zip(self, message: pyrogram.types.Message):
         """Zips the file sent by the user and sends it back to them."""
 
@@ -47,22 +23,8 @@ class ZipRarBot(pyrogram.Client):
         # Send the zip file to the user.
         await self.send_document(message.chat.id, zip_file_path)
 
-    async def rar(self, message: pyrogram.types.Message):
-        """Rars the file sent by the user and sends it back to them."""
-
-        # Get the file path from the user.
-        file_path = message.document.file_path
-
-        # Create a rar file of the file.
-        rar_file_path = file_path + ".rar"
-        with rarfile.RarFile(rar_file_path, "w") as rar_file:
-            rar_file.write(file_path)
-
-        # Send the rar file to the user.
-        await self.send_document(message.chat.id, rar_file_path)
-
-    async def rar_with_password(self, message: pyrogram.types.Message):
-        """Rars the file sent by the user and sends it back to them with a password."""
+    async def zip_with_password(self, message: pyrogram.types.Message):
+        """Zips the file sent by the user and sends it back to them with a password."""
 
         # Get the file path from the user.
         file_path = message.document.file_path
@@ -70,18 +32,18 @@ class ZipRarBot(pyrogram.Client):
         # Get the password from the user.
         password = message.text.split()[1]
 
-        # Create a rar file of the file with a password.
-        rar_file_path = file_path + ".rar"
-        with rarfile.RarFile(rar_file_path, "w", mode="w") as rar_file:
-            rar_file.write(file_path, password)
+        # Create a zip file of the file with a password.
+        zip_file_path = file_path + ".zip"
+        with zipfile.ZipFile(zip_file_path, "w", zipfile.ZIP_DEFLATED) as zip_file:
+            zip_file.write(file_path, password)
 
-        # Send the rar file to the user.
-        await self.send_document(message.chat.id, rar_file_path)
+        # Send the zip file to the user.
+        await self.send_document(message.chat.id, zip_file_path)
 
 # Create a new bot.
-bot = ZipRarBot("5331375208:AAGw2IB5kXZ7U8x-AScLdMiBjbM0RcwXJAQ")
+bot = ZipRarBot("6534707", "4bcc61d959a9f403b2f20149cbbe627a", "5053402593:AAGDN6XuOz4qKWgPIatEGfkJqoporK94h78", 123456789)
 
-# Add handlers for the /zip, /rar, /zip_with_password, and /rar_with_password commands.
+# Add handlers for the /zip and /zip_with_password commands.
 bot.add_handler(filters.command("zip") & filters.document, zip)
 bot.add_handler(filters.command("zip_with_password") & filters.document, zip_with_password)
 
