@@ -4,6 +4,21 @@ import rarfile
 from pyrogram.types import User, Message
 from pyrogram import filters
 from pyrogram.filters import Message
+
+async def rar(client, message: pyrogram.types.Message):
+    """Rars the file sent by the user and sends it back to them."""
+
+    # Get the file path from the user.
+    file_path = message.document.file_path
+
+    # Create a rar file of the file.
+    rar_file_path = file_path + ".rar"
+    with rarfile.RarFile(rar_file_path, "w") as rar_file:
+        rar_file.write(file_path)
+
+    # Send the rar file to the user.
+    await client.send_document(message.chat.id, rar_file_path)
+
 class ZipRarBot(pyrogram.Client):
     async def zip(self, message: pyrogram.types.Message):
         """Zips the file sent by the user and sends it back to them."""
@@ -18,20 +33,6 @@ class ZipRarBot(pyrogram.Client):
 
         # Send the zip file to the user.
         await self.send_document(message.chat.id, zip_file_path)
-
-    async def rar(self, message: pyrogram.types.Message):
-        """Rars the file sent by the user and sends it back to them."""
-
-        # Get the file path from the user.
-        file_path = message.document.file_path
-
-        # Create a rar file of the file.
-        rar_file_path = file_path + ".rar"
-        with rarfile.RarFile(rar_file_path, "w") as rar_file:
-            rar_file.write(file_path)
-
-        # Send the rar file to the user.
-        await self.send_document(message.chat.id, rar_file_path)
 
     async def zip_with_password(self, message: pyrogram.types.Message):
         """Zips the file sent by the user and sends it back to them with a password."""
