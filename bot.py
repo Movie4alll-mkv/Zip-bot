@@ -7,7 +7,7 @@ from pyrogram.filters import Message
 class ZipRarBot(pyrogram.Client):
     def __init__(self, api_id, api_hash, bot_token, owner_id):
 
-    async def zip(self, message: pyrogram.types.Message):
+     async def zip(self, message: pyrogram.types.Message):
         """Zips the file sent by the user and sends it back to them."""
 
         # Get the file path from the user.
