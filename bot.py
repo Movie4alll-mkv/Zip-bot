@@ -6,8 +6,6 @@ from pyrogram.filters import Message
 
 class ZipRarBot(pyrogram.Client):
     def __init__(self, api_id, api_hash, bot_token, owner_id):
-        super().__init__(api_id, api_hash, bot_token)
-        self.owner_id = owner_id
 
     async def zip(self, message: pyrogram.types.Message):
         """Zips the file sent by the user and sends it back to them."""
