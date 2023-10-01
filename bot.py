@@ -79,7 +79,7 @@ class ZipRarBot(pyrogram.Client):
         await self.send_document(message.chat.id, rar_file_path)
 
 # Create a new bot.
-bot = ZipRarBot("5053402593:AAGDN6XuOz4qKWgPIatEGfkJqoporK94h78")
+bot = ZipRarBot("5331375208:AAGw2IB5kXZ7U8x-AScLdMiBjbM0RcwXJAQ")
 
 # Add handlers for the /zip, /rar, /zip_with_password, and /rar_with_password commands.
 bot.add_handler(filters.command("zip") & filters.document, zip)
