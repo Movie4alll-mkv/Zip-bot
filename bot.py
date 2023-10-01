@@ -4,7 +4,7 @@ import rarfile
 from pyrogram.types import User, Message
 from pyrogram.filters import Message
 class ZipRarBot(pyrogram.Client):
-    async def zip(self, message: pyrogram.Message):
+    async def zip(self, message: pyrogram.types.Message):
         """Zips the file sent by the user and sends it back to them."""
 
         # Get the file path from the user.
