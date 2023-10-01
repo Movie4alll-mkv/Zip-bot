@@ -18,7 +18,7 @@ class ZipRarBot(pyrogram.Client):
         # Send the zip file to the user.
         await self.send_document(message.chat.id, zip_file_path)
 
-    async def rar(self, message: pyrogram.Message):
+    async def rar(self, message: pyrogram.types.Message):
         """Rars the file sent by the user and sends it back to them."""
 
         # Get the file path from the user.
