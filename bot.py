@@ -1,6 +1,6 @@
 import pyrogram
 from zipfile import ZipFile
-
+from pyrogram.types import Message
 class ZipBot(pyrogram.Client):
     async def zip(self, message: pyrogram.Message):
         """Zips the source code from GitHub and sends it to the user."""
